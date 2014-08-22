@@ -11,14 +11,16 @@ public class Main {
         
         final String host = args[0];
         final Integer port = Integer.parseInt(args[1]);
-        
+
         Runnable print_dns = new Runnable() {
             @Override
             public void run() {
+                System.out.println("networkaddress.cache.ttl: " + java.security.Security.getProperty("networkaddress.cache.ttl"));
+                System.out.println("networkaddress.cache.negative.ttl: " + java.security.Security.getProperty("networkaddress.cache.negative.ttl"));
+                        
                 InetSocketAddress newAddr = new InetSocketAddress(host, port);
                 System.out.println(newAddr);
                 System.out.println(newAddr.isUnresolved());
-                
             }
         };
 
